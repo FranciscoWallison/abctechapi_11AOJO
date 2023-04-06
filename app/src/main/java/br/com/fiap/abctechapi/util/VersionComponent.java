@@ -1,7 +1,6 @@
 package br.com.fiap.abctechapi.util;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,3 +21,4 @@ public class VersionComponent {
         return properties.get("build_name") + " - " + properties.get("build_version");
     }
 }
+
