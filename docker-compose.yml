@@ -14,13 +14,15 @@ services:
     environment:
       - MYSQL_DATABASE=database_fiap
       - MYSQL_ROOT_PASSWORD=root
-  app:
-    build: app
-    container_name: app
-    working_dir: /app
+  api:
+    container_name: api
+    image: spring-boot-api-tutorial-img
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    depends_on:
+      - db_mysql
+    ports:
+      - 8080:8080
     restart: always
-    tty: true
-    volumes:       
-      - ./app:/app
-    # command: ["./mvnw", spring-boot:run"]
     
