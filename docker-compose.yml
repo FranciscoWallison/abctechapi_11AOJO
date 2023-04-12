@@ -1,28 +1,30 @@
 version: '3'
 services:
   # CONFIGURAÇÕES MYSQL
-  db_mysql:
-    container_name: db_mysql
-    image: mysql:8.0.32-oracle
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
-    tty: true
-    ports:
-      - "3336:3306"
-    volumes:
-      - ./db/mysql/dbdata:/var/lib/mysql
-    environment:
-      - MYSQL_DATABASE=database_fiap
-      - MYSQL_ROOT_PASSWORD=root
+  # db_mysql:
+  #   container_name: db_mysql
+  #   image: mysql:8.0.32-oracle
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   restart: always
+  #   tty: true
+  #   ports:
+  #     - "3336:3306"
+  #   volumes:
+  #     - ./db/mysql/dbdata:/var/lib/mysql
+  #   environment:
+  #     - MYSQL_DATABASE=database_fiap
+  #     - MYSQL_ROOT_PASSWORD=root
   api:
     container_name: api
     image: spring-boot-api-tutorial-img
-    build:
-      context: ./app
-      dockerfile: Dockerfile
-    depends_on:
-      - db_mysql
+    build: app
+      # context: ./app
+      # dockerfile: Dockerfile
+    # depends_on:
+    #   - db_mysql
     ports:
       - 8080:8080
-    restart: always
-    
+    # restart: always
+    tty: true
+    volumes:
+      - ./app:/app/
