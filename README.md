@@ -5,7 +5,7 @@
 
 ## Possiveis erros
 
-Validar erro de 'mvnw arquivo não encontrado'
+Validar erro de './mvnw: not found '
 ````
 dos2unix mvnw
 
