@@ -10,7 +10,6 @@ Validar erro de './mvnw: not found '
 dos2unix mvnw
 
 chmod +x mvnw
-
 ````
 
 ````
