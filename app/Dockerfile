@@ -1,4 +1,4 @@
-FROM eclipse-temurin:17-jdk-jammy
+FROM adoptopenjdk/openjdk11:alpine-slim 
 
 WORKDIR /app
 
@@ -8,4 +8,8 @@ RUN ./mvnw dependency:resolve
 
 COPY src ./src
 
-ENTRYPOINT ["./mvnw", "spring-boot:run"]
+COPY commands.sh /scripts/commands.sh
+RUN ["chmod", "+x", "/scripts/commands.sh"]
+ENTRYPOINT ["/scripts/commands.sh"]
+
+# ENTRYPOINT ["./mvnw", "spring-boot:run", "&&", "./mvnw", "package"]
