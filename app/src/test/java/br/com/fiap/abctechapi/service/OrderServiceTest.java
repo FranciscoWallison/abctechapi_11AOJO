@@ -29,7 +29,7 @@ public class OrderServiceTest {
     private OrderService orderService;
     @BeforeEach
     public void init() {
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this);
         orderService = new OrderServiceImpl(assistanceRepository,orderRepository);
         Mockito.when(assistanceRepository.findById(Mockito.any()))
                 .thenReturn(Optional.of(new Assistance(1L, "Teste", "Teste Description")));

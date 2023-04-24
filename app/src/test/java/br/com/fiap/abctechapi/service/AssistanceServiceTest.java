@@ -16,8 +16,6 @@ import java.util.List;
 @SpringBootTest
 public class AssistanceServiceTest {
 
-
-
     private AssistanceService assistanceService;
     @MockBean
     private AssistanceRepository assistanceRepository;
@@ -25,10 +23,9 @@ public class AssistanceServiceTest {
 
     @BeforeEach
     public void init(){
-        MockitoAnnotations.openMocks(this);
+        MockitoAnnotations.initMocks(this);
         assistanceService = new AssistanceServiceImpl(assistanceRepository);
     }
-
 
     @Test
     public void test_list_assistance(){
