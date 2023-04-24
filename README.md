@@ -5,9 +5,11 @@
 
 ## Possiveis erros
 
-Validar erro de './mvnw: not found '
+Validar erro de './mvnw: not found' ou  './commands.sh: not found' 
+
 ````
 sudo dos2unix mvnw && chmod +x mvnw
+sudo dos2unix commands.sh && chmod +x commands.sh
 ````
 ### Comando para entrar no container do app
 ````
@@ -19,5 +21,3 @@ sudo docker compose -f "docker-compose.yml" down && docker compose -f "docker-co
 ````
 ./mvnw spring-boot:run -Dspring-boot.run.jvmArguments="-DDB_HOSTNAME=db_mysql -DDB_PORT=3306 -DDB_NAME=abc_tech -DDB_USERNAME=root -DDB_PASSWORD=Fiap1234"
 ````
-https://github.com/mgonzaga1990/fxRatesWidget/blob/aa05a2464ecc63fd5fad6e9325752c1e38dce188/fxWidget/Dockerfile
-https://mbafullcycle.s3.us-east-1.amazonaws.com/system-design/Design%20Docs.pdf
