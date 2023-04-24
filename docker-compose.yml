@@ -24,8 +24,14 @@ services:
     # depends_on:
     #   - db_mysql
     ports:
-      - 8080:8080
+      - 8080:80
     # restart: always
+    environment:
+      - DB_HOSTNAME=db_mysql
+      - DB_PORT=3306
+      - DB_NAME=abc_tech
+      - DB_USER=root
+      - DB_PASSWORD=Fiap1234
     tty: true
     volumes:
       - ./app:/app/

@@ -1,4 +1,4 @@
-FROM adoptopenjdk/openjdk11:alpine-slim 
+FROM openjdk:11
 
 WORKDIR /app
 
@@ -11,5 +11,3 @@ COPY src ./src
 COPY commands.sh /scripts/commands.sh
 RUN ["chmod", "+x", "/scripts/commands.sh"]
 ENTRYPOINT ["/scripts/commands.sh"]
-
-# ENTRYPOINT ["./mvnw", "spring-boot:run", "&&", "./mvnw", "package"]
