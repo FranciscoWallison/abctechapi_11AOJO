@@ -1,5 +1,6 @@
 package br.com.fiap.abctechapi.service;
 
+import br.com.fiap.abctechapi.service.impl.AssistanceServiceImpl;
 import br.com.fiap.abctechapi.entity.Assistance;
 import br.com.fiap.abctechapi.entity.Order;
 import br.com.fiap.abctechapi.handler.exception.MaximumAssistException;
@@ -21,6 +22,7 @@ import java.util.Optional;
 @SpringBootTest
 public class OrderServiceTest {
 
+    private AssistanceService assistanceService;
     @MockBean
     private AssistanceRepository assistanceRepository;
     @MockBean
@@ -29,10 +31,24 @@ public class OrderServiceTest {
     private OrderService orderService;
     @BeforeEach
     public void init() {
+        assistanceService = new AssistanceServiceImpl(assistanceRepository);
+
         MockitoAnnotations.initMocks(this);
         orderService = new OrderServiceImpl(assistanceRepository,orderRepository);
         Mockito.when(assistanceRepository.findById(Mockito.any()))
                 .thenReturn(Optional.of(new Assistance(1L, "Teste", "Teste Description")));
+    }
+
+    @Test
+    public void test_list_order(){
+        Order newOrder = new Order();
+        newOrder.setOperatorId(1234L);
+        Mockito.when(orderRepository.findAll())
+                .thenReturn(
+                        List.of(newOrder));
+        List<Order> list = orderService.getOrders();
+        Assertions.assertNotNull(list);
+        Assertions.assertEquals(list.size(), 1);
     }
 
     //minimum assistencias > 0

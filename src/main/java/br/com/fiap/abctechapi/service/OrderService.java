@@ -6,5 +6,6 @@ import br.com.fiap.abctechapi.entity.Order;
 import java.util.List;
 
 public interface OrderService {
+    List<Order> getOrders();
     void saveOrder(Order order, List<Long> assistsId) throws Exception;
 }

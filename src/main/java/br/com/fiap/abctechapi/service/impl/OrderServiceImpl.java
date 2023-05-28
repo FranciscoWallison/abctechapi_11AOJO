@@ -30,6 +30,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> getOrders() {
+        return this.orderRepository.findAll();
+    }
+
+    @Override
     public void saveOrder(Order order, List<Long> assistsId) throws Exception {
         ArrayList<Assistance> list = new ArrayList<>();
         assistsId.forEach( id -> {

@@ -7,8 +7,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.List;
 import javax.validation.Valid;
+import br.com.fiap.abctechapi.entity.Order;
 
 @Api(tags = "Order")
 @RequestMapping("/order")
@@ -20,6 +21,12 @@ public class OrderController {
     @Autowired
     public OrderController (OrderApplication orderApplication){
         this.orderApplication = orderApplication;
+    }
+
+    @ApiOperation(value = "Consultar todas as Ordens")
+    @GetMapping
+    public ResponseEntity<List<Order>> getOrders(){
+        return ResponseEntity.ok(orderApplication.getOrders());
     }
 
     @ApiOperation(value = "Cria uma nova ordem")

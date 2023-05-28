@@ -2,14 +2,17 @@ package br.com.fiap.abctechapi.application.impl;
 
 import br.com.fiap.abctechapi.application.OrderApplication;
 import br.com.fiap.abctechapi.application.dto.OrderDto;
+
 import br.com.fiap.abctechapi.entity.Order;
 import br.com.fiap.abctechapi.entity.OrderLocation;
 import br.com.fiap.abctechapi.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.stream.Collectors;
 
 @Component
 public class OrderApplicationImpl implements OrderApplication {
@@ -20,6 +23,23 @@ public class OrderApplicationImpl implements OrderApplication {
     @Autowired
     public OrderApplicationImpl(OrderService orderService){
         this.orderService = orderService;
+    }
+
+    @Override
+    public List<Order> getOrders() {
+        List<Order> order = this.orderService.getOrders()
+                .stream()
+                .map(o -> 
+                    new Order(
+                            o.getId(),
+                            o.getOperatorId(),
+                            o.getAssists(),
+                            o.getStartOrderLocation(),
+                            o.getEndOrderLocation()
+                        )
+                    )
+                .collect(Collectors.toList());
+        return order;
     }
 
     @Override
