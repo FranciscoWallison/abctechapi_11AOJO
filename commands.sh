@@ -5,7 +5,7 @@
 
 # ./mvnw spring-boot:run -f pom.xml
 
-java -jar ./target/abctechapi-0.0.2-SNAPSHOT.war
+java -jar ./target/abctechapi-0.0.6-SNAPSHOT.war
 
 # ./mvnw clean install
 
